@@ -177,14 +177,14 @@ const Inventory = () => {
       dataIndex: 'purchaseQtyCoffee',
       key: 'purchaseQtyCoffee',
       width: 140,
-      render: (value) => <span style={{ backgroundColor: '#fff3cd', padding: '2px 6px', borderRadius: '4px' }}>{value}</span>
+      render: (value) => <span style={{ backgroundColor: '#f8f9fa', padding: '2px 6px', borderRadius: '4px', color: '#495057' }}>{value}</span>
     },
     {
       title: 'Purchase Qty - Tea',
       dataIndex: 'purchaseQtyTea',
       key: 'purchaseQtyTea',
       width: 130,
-      render: (value) => <span style={{ backgroundColor: '#fff3cd', padding: '2px 6px', borderRadius: '4px' }}>{value}</span>
+      render: (value) => <span style={{ backgroundColor: '#f8f9fa', padding: '2px 6px', borderRadius: '4px', color: '#495057' }}>{value}</span>
     },
     {
       title: 'Coffee Price',
@@ -219,21 +219,21 @@ const Inventory = () => {
       dataIndex: 'totalMonthlyPurchase',
       key: 'totalMonthlyPurchase',
       width: 160,
-      render: (value) => <strong style={{ color: '#1890ff' }}>₹{value.toLocaleString()}</strong>
+      render: (value) => <strong style={{ color: '#495057' }}>₹{value.toLocaleString()}</strong>
     },
     {
       title: 'No of Deliveries',
       dataIndex: 'noOfDeliveries',
       key: 'noOfDeliveries',
       width: 120,
-      render: (value) => <span style={{ backgroundColor: '#fff3cd', padding: '2px 6px', borderRadius: '4px' }}>{value}</span>
+      render: (value) => <span style={{ backgroundColor: '#f8f9fa', padding: '2px 6px', borderRadius: '4px', color: '#495057' }}>{value}</span>
     },
     {
       title: 'No of Service Visit',
       dataIndex: 'noOfServiceVisit',
       key: 'noOfServiceVisit',
       width: 140,
-      render: (value) => <span style={{ backgroundColor: '#fff3cd', padding: '2px 6px', borderRadius: '4px' }}>{value}</span>
+      render: (value) => <span style={{ backgroundColor: '#f8f9fa', padding: '2px 6px', borderRadius: '4px', color: '#495057' }}>{value}</span>
     },
     {
       title: 'KM Travelled Delivery',
@@ -306,7 +306,7 @@ const Inventory = () => {
 
   return (
   <div className="p-6">
-      <Title level={2} style={{ marginBottom: '24px', color: '#1890ff' }}>
+      <Title level={2} style={{ marginBottom: '24px', color: '#495057' }}>
         Financial & Operational Report
       </Title>
       
@@ -340,28 +340,30 @@ const Inventory = () => {
       
       <style jsx>{`
         .custom-table .ant-table-thead > tr > th {
-          background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-          color: white;
-          font-weight: 600;
+          background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+          color: #495057;
+          font-weight: 500;
           border: none;
           padding: 16px 12px;
+          border-bottom: 2px solid #dee2e6;
         }
         
         .custom-table .ant-table-tbody > tr > td {
           border-bottom: 1px solid #f0f0f0;
           padding: 12px;
+          color: #6c757d;
         }
         
         .custom-table .ant-table-tbody > tr:hover > td {
-          background-color: #f5f7fa;
+          background-color: #f8f9fa;
         }
         
         .custom-table .ant-table-tbody > tr:nth-child(even) > td {
-          background-color: #fafafa;
+          background-color: #fafbfc;
         }
         
         .custom-table .ant-table-tbody > tr:nth-child(even):hover > td {
-          background-color: #f0f2f5;
+          background-color: #f1f3f4;
         }
       `}</style>
   </div>
