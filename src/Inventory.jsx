@@ -287,7 +287,7 @@ const Inventory = () => {
           boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)',
           border: '1px solid #f0f0f0'
         }}
-        bodyStyle={{ padding: 0 }}
+        styles={{ body: { padding: 0 } }}
       >
         <Table
           dataSource={dataSource}
@@ -312,7 +312,7 @@ const Inventory = () => {
         />
       </Card>
       
-      <style jsx>{`
+      <style>{`
         .custom-table .ant-table-thead > tr > th {
           background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
           color: #495057;
