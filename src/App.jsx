@@ -2,6 +2,8 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Body from './Body';
 import Login from './Login';
 import Profile from './Profile';
+import Dashboard from './Dashboard';
+import Inventory from './Inventory';
 
 function App() {
   return (
@@ -11,6 +13,8 @@ function App() {
           <Route index element={<Login />} />
           <Route path="login" element={<Login />} />
           <Route path="profile" element={<Profile />} />
+          <Route path="dashboard" element={<Dashboard />} />
+          <Route path="inventory" element={<Inventory />} />
         </Route>
       </Routes>
     </BrowserRouter>
