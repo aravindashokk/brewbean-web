@@ -1,11 +1,12 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { Table, Card, Typography, Tag } from 'antd';
 
 const { Title } = Typography;
 
 const Inventory = () => {
-  // Generate 100 sample data entries
-  const generateSampleData = () => {
+  // Generate 100 sample data entries (memoized to prevent regeneration on every render)
+  const dataSource = useMemo(() => {
+    const generateSampleData = () => {
     const customers = [
       'Xemex', 'Prabha', 'Mayur Sai', 'Sundaram Composite', 'HNTI', 'Senka',
       'TechCorp', 'Global Solutions', 'Innovation Hub', 'Digital Dynamics',
@@ -102,10 +103,11 @@ const Inventory = () => {
       });
     }
     
-    return data;
-  };
-
-  const dataSource = generateSampleData();
+      return data;
+    };
+    
+    return generateSampleData();
+  }, []); // Empty dependency array ensures data is generated only once
 
   const columns = [
     {
@@ -114,6 +116,7 @@ const Inventory = () => {
       key: 'customer',
       width: 120,
       fixed: 'left',
+      sorter: (a, b) => a.customer.localeCompare(b.customer),
       render: (text) => <strong>{text}</strong>
     },
     {
@@ -121,6 +124,7 @@ const Inventory = () => {
       dataIndex: 'mode',
       key: 'mode',
       width: 100,
+      sorter: (a, b) => a.mode.localeCompare(b.mode),
       render: (mode) => {
         const color = mode === 'Sale' ? 'green' : mode === 'Rental' ? 'blue' : 'orange';
         return <Tag color={color}>{mode}</Tag>;
@@ -131,6 +135,11 @@ const Inventory = () => {
       dataIndex: 'month',
       key: 'month',
       width: 80,
+      sorter: (a, b) => {
+        const monthOrder = ['January', 'February', 'March', 'April', 'May', 'June', 
+                           'July', 'August', 'September', 'October', 'November', 'December'];
+        return monthOrder.indexOf(a.month) - monthOrder.indexOf(b.month);
+      },
       render: (month) => <Tag color="purple">{month}</Tag>
     },
     {
@@ -251,6 +260,7 @@ const Inventory = () => {
       key: 'overallProfit',
       width: 120,
       fixed: 'right',
+      sorter: (a, b) => a.overallProfit - b.overallProfit,
       render: (value) => (
         <strong style={{ 
           color: value > 0 ? '#52c41a' : '#ff4d4f',
@@ -282,12 +292,14 @@ const Inventory = () => {
         <Table
           dataSource={dataSource}
           columns={columns}
-          scroll={{ x: 2000, y: 600 }}
+          scroll={{ x: 2000, y: 'calc(100vh - 300px)' }}
           pagination={{
-            pageSize: 10,
+            pageSize: 20,
             showSizeChanger: true,
             showQuickJumper: true,
-            showTotal: (total, range) => `${range[0]}-${range[1]} of ${total} items`
+            showTotal: (total, range) => `${range[0]}-${range[1]} of ${total} items`,
+            pageSizeOptions: ['10', '20', '50', '100'],
+            defaultPageSize: 20
           }}
           style={{
             borderRadius: '12px',
@@ -296,6 +308,7 @@ const Inventory = () => {
           size="middle"
           bordered={false}
           className="custom-table"
+          rowKey="key"
         />
       </Card>
       
