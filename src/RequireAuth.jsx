@@ -8,8 +8,9 @@ const RequireAuth = () => {
   useEffect(() => {
     const checkAuth = async () => {
       try {
-        const res = await fetch('http://localhost:3000/profile', {
+        const res = await fetch('/api/profile', {
           credentials: 'include',
+          redirect: 'manual',
         });
         setIsAuthenticated(res.status === 200);
       } catch (e) {
