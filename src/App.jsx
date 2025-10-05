@@ -5,14 +5,17 @@ import Profile from './Profile';
 import Dashboard from './Dashboard';
 import Inventory from './Inventory';
 import RequireAuth from './RequireAuth';
+import PublicOnly from './PublicOnly';
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Body />}>
-          <Route index element={<Login />} />
-          <Route path="login" element={<Login />} />
+          <Route element={<PublicOnly />}>
+            <Route index element={<Login />} />
+            <Route path="login" element={<Login />} />
+          </Route>
 
           <Route element={<RequireAuth />}>
             <Route path="profile" element={<Profile />} />

@@ -23,7 +23,7 @@ const NavBar = ({ isMenuOpen, setIsMenuOpen }) => {
             </svg>
           </button>
         )}
-        <a className="btn btn-ghost text-xl">Brewbean</a>
+        <Link to="/profile" className="btn btn-ghost text-xl">Brewbean</Link>
       </div>
 
       {!hideUserMenu && (
