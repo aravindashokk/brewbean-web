@@ -4,147 +4,108 @@ import { Table, Card, Typography, Tag } from 'antd';
 const { Title } = Typography;
 
 const Inventory = () => {
-  // Data structure based on the financial table from the image
-  const dataSource = [
-    {
-      key: '1',
-      customer: 'Xemex',
-      mode: 'Term Basis',
-      month: 'August',
-      purchaseQtyCoffee: 70,
-      purchaseQtyTea: 20,
-      coffeePrice: 98,
-      teaDustPrice: 87.5,
-      purchaseValueCoffee: 6860,
-      purchaseValueTea: 1960,
-      totalMonthlyPurchase: 8820,
-      noOfDeliveries: 1,
-      noOfServiceVisit: 3,
-      kmTravelledDelivery: 42,
-      kmTravelledService: 10,
-      deliveryCharge: 205.8,
-      serviceVisitCharge: 111.3,
-      rawMaterialCost: 5831,
-      deductions: 411.6,
-      rental: 0,
-      overallProfit: 617.4
-    },
-    {
-      key: '2',
-      customer: 'Prabha',
-      mode: 'Sale',
-      month: 'August',
-      purchaseQtyCoffee: 40,
-      purchaseQtyTea: 25,
-      coffeePrice: 78,
-      teaDustPrice: 87,
-      purchaseValueCoffee: 3120,
-      purchaseValueTea: 2175,
-      totalMonthlyPurchase: 5295,
-      noOfDeliveries: 1,
-      noOfServiceVisit: 0,
-      kmTravelledDelivery: 2,
-      kmTravelledService: 0,
-      deliveryCharge: 52,
-      serviceVisitCharge: 0,
-      rawMaterialCost: 3710,
-      deductions: 0,
-      rental: 0,
-      overallProfit: 1532
-    },
-    {
-      key: '3',
-      customer: 'Mayur Sai',
-      mode: 'Sale',
-      month: 'August',
-      purchaseQtyCoffee: 15,
-      purchaseQtyTea: 30,
-      coffeePrice: 78,
-      teaDustPrice: 87,
-      purchaseValueCoffee: 1170,
-      purchaseValueTea: 2610,
-      totalMonthlyPurchase: 3780,
-      noOfDeliveries: 1,
-      noOfServiceVisit: 0,
-      kmTravelledDelivery: 52,
-      kmTravelledService: 0,
-      deliveryCharge: 52,
-      serviceVisitCharge: 0,
-      rawMaterialCost: 2646,
-      deductions: 0,
-      rental: 0,
-      overallProfit: 1084
-    },
-    {
-      key: '4',
-      customer: 'Sundaram Composite',
-      mode: 'Rental',
-      month: 'August',
-      purchaseQtyCoffee: 0,
-      purchaseQtyTea: 0,
-      coffeePrice: 0,
-      teaDustPrice: 0,
-      purchaseValueCoffee: 0,
-      purchaseValueTea: 0,
-      totalMonthlyPurchase: 0,
-      noOfDeliveries: 0,
-      noOfServiceVisit: 0,
-      kmTravelledDelivery: 0,
-      kmTravelledService: 0,
-      deliveryCharge: 0,
-      serviceVisitCharge: 0,
-      rawMaterialCost: 0,
-      deductions: 0,
-      rental: 1500,
-      overallProfit: 1500
-    },
-    {
-      key: '5',
-      customer: 'HNTI',
-      mode: 'Rental',
-      month: 'September',
-      purchaseQtyCoffee: 0,
-      purchaseQtyTea: 0,
-      coffeePrice: 0,
-      teaDustPrice: 0,
-      purchaseValueCoffee: 0,
-      purchaseValueTea: 0,
-      totalMonthlyPurchase: 0,
-      noOfDeliveries: 0,
-      noOfServiceVisit: 0,
-      kmTravelledDelivery: 0,
-      kmTravelledService: 0,
-      deliveryCharge: 0,
-      serviceVisitCharge: 0,
-      rawMaterialCost: 0,
-      deductions: 0,
-      rental: 2000,
-      overallProfit: 2000
-    },
-    {
-      key: '6',
-      customer: 'Senka',
-      mode: 'Sale',
-      month: 'September',
-      purchaseQtyCoffee: 25,
-      purchaseQtyTea: 15,
-      coffeePrice: 78,
-      teaDustPrice: 87,
-      purchaseValueCoffee: 1950,
-      purchaseValueTea: 1305,
-      totalMonthlyPurchase: 3255,
-      noOfDeliveries: 1,
-      noOfServiceVisit: 0,
-      kmTravelledDelivery: 15,
-      kmTravelledService: 0,
-      deliveryCharge: 15,
-      serviceVisitCharge: 0,
-      rawMaterialCost: 2278.5,
-      deductions: 0,
-      rental: 0,
-      overallProfit: 961.5
+  // Generate 100 sample data entries
+  const generateSampleData = () => {
+    const customers = [
+      'Xemex', 'Prabha', 'Mayur Sai', 'Sundaram Composite', 'HNTI', 'Senka',
+      'TechCorp', 'Global Solutions', 'Innovation Hub', 'Digital Dynamics',
+      'Future Systems', 'Smart Enterprises', 'Alpha Corp', 'Beta Industries',
+      'Gamma Solutions', 'Delta Technologies', 'Epsilon Services', 'Zeta Corp',
+      'Theta Industries', 'Lambda Systems', 'Sigma Solutions', 'Omega Corp',
+      'Phoenix Enterprises', 'Titan Industries', 'Apex Solutions', 'Vertex Corp',
+      'Nexus Systems', 'Quantum Solutions', 'Stellar Corp', 'Cosmic Industries',
+      'Galaxy Systems', 'Universe Corp', 'Infinity Solutions', 'Eternal Industries',
+      'Divine Corp', 'Celestial Systems', 'Mystic Solutions', 'Enigma Corp',
+      'Cipher Industries', 'Code Systems', 'Logic Solutions', 'Algorithm Corp',
+      'Data Industries', 'Info Systems', 'Knowledge Solutions', 'Wisdom Corp',
+      'Intelligence Industries', 'Smart Systems', 'Clever Solutions', 'Brilliant Corp'
+    ];
+    
+    const modes = ['Sale', 'Rental', 'Term Basis'];
+    const months = ['January', 'February', 'March', 'April', 'May', 'June', 
+                   'July', 'August', 'September', 'October', 'November', 'December'];
+    
+    const data = [];
+    
+    for (let i = 1; i <= 100; i++) {
+      const mode = modes[Math.floor(Math.random() * modes.length)];
+      const month = months[Math.floor(Math.random() * months.length)];
+      const customer = customers[Math.floor(Math.random() * customers.length)];
+      
+      let purchaseQtyCoffee = 0;
+      let purchaseQtyTea = 0;
+      let coffeePrice = 0;
+      let teaDustPrice = 0;
+      let purchaseValueCoffee = 0;
+      let purchaseValueTea = 0;
+      let totalMonthlyPurchase = 0;
+      let noOfDeliveries = 0;
+      let noOfServiceVisit = 0;
+      let kmTravelledDelivery = 0;
+      let kmTravelledService = 0;
+      let deliveryCharge = 0;
+      let serviceVisitCharge = 0;
+      let rawMaterialCost = 0;
+      let deductions = 0;
+      let rental = 0;
+      let overallProfit = 0;
+      
+      if (mode === 'Rental') {
+        rental = Math.floor(Math.random() * 3000) + 1000; // 1000-4000
+        overallProfit = rental;
+      } else {
+        purchaseQtyCoffee = Math.floor(Math.random() * 100) + 10; // 10-110
+        purchaseQtyTea = Math.floor(Math.random() * 50) + 5; // 5-55
+        coffeePrice = Math.floor(Math.random() * 40) + 60; // 60-100
+        teaDustPrice = Math.floor(Math.random() * 30) + 70; // 70-100
+        
+        purchaseValueCoffee = purchaseQtyCoffee * coffeePrice;
+        purchaseValueTea = purchaseQtyTea * teaDustPrice;
+        totalMonthlyPurchase = purchaseValueCoffee + purchaseValueTea;
+        
+        noOfDeliveries = Math.floor(Math.random() * 5) + 1; // 1-5
+        noOfServiceVisit = Math.floor(Math.random() * 4); // 0-3
+        kmTravelledDelivery = Math.floor(Math.random() * 100) + 10; // 10-110
+        kmTravelledService = Math.floor(Math.random() * 50); // 0-50
+        
+        deliveryCharge = kmTravelledDelivery * 4.9; // ₹4.9 per km
+        serviceVisitCharge = noOfServiceVisit * 37.1; // ₹37.1 per visit
+        
+        rawMaterialCost = totalMonthlyPurchase * 0.7; // 70% of purchase value
+        deductions = Math.floor(Math.random() * 500); // 0-500
+        
+        overallProfit = totalMonthlyPurchase + deliveryCharge + serviceVisitCharge - rawMaterialCost - deductions;
+      }
+      
+      data.push({
+        key: i.toString(),
+        customer,
+        mode,
+        month,
+        purchaseQtyCoffee,
+        purchaseQtyTea,
+        coffeePrice,
+        teaDustPrice,
+        purchaseValueCoffee,
+        purchaseValueTea,
+        totalMonthlyPurchase,
+        noOfDeliveries,
+        noOfServiceVisit,
+        kmTravelledDelivery,
+        kmTravelledService,
+        deliveryCharge: Math.round(deliveryCharge * 10) / 10,
+        serviceVisitCharge: Math.round(serviceVisitCharge * 10) / 10,
+        rawMaterialCost: Math.round(rawMaterialCost),
+        deductions,
+        rental,
+        overallProfit: Math.round(overallProfit * 10) / 10
+      });
     }
-  ];
+    
+    return data;
+  };
+
+  const dataSource = generateSampleData();
 
   const columns = [
     {
@@ -305,7 +266,7 @@ const Inventory = () => {
   ];
 
   return (
-  <div className="p-6">
+  <div className="p-6 pb-24">
       <Title level={2} style={{ marginBottom: '24px', color: '#495057' }}>
         Financial & Operational Report
       </Title>

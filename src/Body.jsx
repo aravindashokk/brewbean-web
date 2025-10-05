@@ -9,9 +9,11 @@ const Body = () => {
   const hideUserMenu = location.pathname === '/' || location.pathname === '/login';
 
   return (
-    <div className={!hideUserMenu && isMenuOpen ? 'ml-64 transition-[margin] duration-200 ease-out' : 'ml-0 transition-[margin] duration-200 ease-out'}>
+    <div className={!hideUserMenu && isMenuOpen ? 'ml-64 transition-[margin] duration-200 ease-out min-h-screen flex flex-col' : 'ml-0 transition-[margin] duration-200 ease-out min-h-screen flex flex-col'}>
       <NavBar isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
-      <Outlet />
+      <div className="flex-1">
+        <Outlet />
+      </div>
       <Footer />
     </div>
   );
