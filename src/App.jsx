@@ -4,6 +4,7 @@ import Login from './Login';
 import Profile from './Profile';
 import Dashboard from './Dashboard';
 import Inventory from './Inventory';
+import RequireAuth from './RequireAuth';
 
 function App() {
   return (
@@ -12,9 +13,12 @@ function App() {
         <Route path="/" element={<Body />}>
           <Route index element={<Login />} />
           <Route path="login" element={<Login />} />
-          <Route path="profile" element={<Profile />} />
-          <Route path="dashboard" element={<Dashboard />} />
-          <Route path="inventory" element={<Inventory />} />
+
+          <Route element={<RequireAuth />}>
+            <Route path="profile" element={<Profile />} />
+            <Route path="dashboard" element={<Dashboard />} />
+            <Route path="inventory" element={<Inventory />} />
+          </Route>
         </Route>
       </Routes>
     </BrowserRouter>
