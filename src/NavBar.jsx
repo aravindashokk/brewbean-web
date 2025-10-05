@@ -59,13 +59,6 @@ const NavBar = ({ isMenuOpen, setIsMenuOpen }) => {
           >
             <div className="flex items-center justify-between px-4 py-4 border-b border-base-200">
               <span className="font-semibold">Menu</span>
-              <button
-                aria-label="Close menu"
-                className="btn btn-ghost btn-sm"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                ✕
-              </button>
             </div>
             <nav className="menu p-4">
               <ul className="menu">
