@@ -1,27 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Navigate, Outlet } from 'react-router-dom';
+import { useAuth } from './AuthContext';
 
 const RequireAuth = () => {
-  const [isLoading, setIsLoading] = useState(true);
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
-
-  useEffect(() => {
-    const checkAuth = async () => {
-      try {
-        const res = await fetch('/api/profile', {
-          credentials: 'include',
-          redirect: 'manual',
-        });
-        setIsAuthenticated(res.status === 200);
-      } catch (e) {
-        setIsAuthenticated(false);
-      } finally {
-        setIsLoading(false);
-      }
-    };
-
-    checkAuth();
-  }, []);
+  const { isLoading, isAuthenticated } = useAuth();
 
   if (isLoading) {
     return <div>Loading...</div>;

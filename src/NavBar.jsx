@@ -6,7 +6,7 @@ const NavBar = ({ isMenuOpen, setIsMenuOpen }) => {
   const hideUserMenu = location.pathname === '/' || location.pathname === '/login';
 
   const handleLogout = () => {
-    window.location.href = 'http://localhost:3000/logout';
+    window.location.href = '/api/logout';
   };
 
   return (

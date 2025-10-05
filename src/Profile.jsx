@@ -1,31 +1,16 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
+import { useAuth } from "./AuthContext";
 
 const Profile = () => {
-  const [user, setUser] = useState(null);
+  const { isLoading, user, refreshAuth } = useAuth();
 
   useEffect(() => {
-    const fetchUser = async () => {
-      try {
-        const res = await fetch("http://localhost:3000/profile", {
-          credentials: "include", // send cookies
-        });
+    if (!user) {
+      refreshAuth();
+    }
+  }, [user, refreshAuth]);
 
-        if (res.status !== 200) {
-          throw new Error("Not authorized");
-        }
-
-        const data = await res.json();
-        setUser(data);
-      } catch (err) {
-        console.error(err);
-        window.location.href = "/login";
-      }
-    };
-
-    fetchUser();
-  }, []);
-
-  if (!user) return <div>Loading...</div>;
+  if (isLoading || !user) return <div>Loading...</div>;
 
   return (
     <div className="flex min-h-screen flex-col items-center justify-center">
