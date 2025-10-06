@@ -165,7 +165,7 @@ const Profile = () => {
                 </div>
                 
                 <div className="form-control">
-                  <label className="label">
+                  <label className="label p-2">
                     <span className="label-text font-medium">Email Address</span>
                   </label>
                   {isEditing ? (
