@@ -15,7 +15,7 @@ const Profile = () => {
   return (
     <div className="flex min-h-screen flex-col items-center justify-center">
       <h1 className="text-3xl font-bold">
-        Welcome, {user.first_name} {user.last_name}!
+        Welcome, {user.firstName} {user.lastName}!
       </h1>
       <p className="text-lg mt-2">Email: {user.email}</p>
     </div>

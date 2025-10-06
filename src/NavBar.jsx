@@ -1,8 +1,10 @@
 import React from 'react';
 import { useLocation, Link } from 'react-router-dom';
+import { useAuth } from './AuthContext';
 
 const NavBar = ({ isMenuOpen, setIsMenuOpen }) => {
   const location = useLocation();
+  const { user } = useAuth();
   const hideUserMenu = location.pathname === '/' || location.pathname === '/login';
 
   const handleLogout = () => {
@@ -33,7 +35,7 @@ const NavBar = ({ isMenuOpen, setIsMenuOpen }) => {
               <div className="w-10 rounded-full">
                 <img
                   alt="User Avatar"
-                  src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
+                  src={user?.profilePictureUrl || "https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"}
                 />
               </div>
             </div>
